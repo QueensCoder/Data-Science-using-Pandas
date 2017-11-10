@@ -1,0 +1,59 @@
+import pandas
+import glob2
+# - means it worked
+df = pandas.read_csv("C:\\Analysis\\file.txt") # need \\ not \ or you throw an error
+
+"""If you do not have pandas or glob2 installed go to CMD (command prompt and type in:
+    pip install pandas
+    pip install glob2
+    
+    OR 
+    
+    you can download Anaconda from Continuum Analytics which has pandas, numpy and a number
+    of other good packages for python
+ """
+
+filelist = glob2.glob("C:\\Analysis\\*.txt") #creates a list with files ending in .txt"
+
+"""glob2 allows you to save time instead of writing the path for each file
+	making a list with files ending in ".txt" will save time instead of typing
+	in each path seperately. Make sure you use the correct path when using glob2.glob("C:\\PATH\\*.txt")
+  for this exercise i used 3 files, file, file2, file3
+  each file was written as such:
+  value
+  10
+  20
+  30
+  40
+  
+  file2 started at 100 and ended at 400, file3 started at 1000 and ended at 4000
+  
+"""
+
+
+def file_mean(filelist):
+	for file in filelist:
+		df = pandas.read_csv(file) #df is the pandas.read_csv of each file
+		print df.mean()  #used print instead of return 
+						 #return only gave us 1st file's mean
+
+""" 
+	when i did this it only returned the mean of the first file, however i was
+	able to write this in a much shorter way. pandas.read_csv(file).mean() will give you 
+  the mean and the data type such as int, float
+"""
+
+#filelist = glob2.glob("C:\\Analysis\\*.txt")
+
+def file_mean2(filelist):
+	for file in filelist:
+		print pandas.read_csv(file).mean()
+
+
+
+
+
+		
+
+
+
